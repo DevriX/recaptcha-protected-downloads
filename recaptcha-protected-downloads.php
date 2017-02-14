@@ -266,10 +266,17 @@ class reCaptchaProtectedDownloads
 
     public static function shortcode($atts, $link='')
     {
+        $ins = $GLOBALS['reCaptchaProtectedDownloadsCore'];
+
         $hash = apply_filters('rcpdl_hash', md5($link), $link);
 
         // add option if not there
-        add_option("rcpdl_{$hash}", esc_attr(esc_url( $link )));
+
+        if ( $ins->isNetworkActive() ) {
+            add_site_option("rcpdl_{$hash}", esc_attr(esc_url( $link )));
+        } else {
+            add_option("rcpdl_{$hash}", esc_attr(esc_url( $link )));
+        }
 
         return apply_filters('rcpdl_link', "#rcpdl={$hash}", $link, $hash);
     }
@@ -381,7 +388,15 @@ class reCaptchaProtectedDownloads
         $resp = $reCaptchaProtectedDownloads->recaptcha->verify($recaptcha, $_SERVER['REMOTE_ADDR']);
         if ($resp->isSuccess() || apply_filters('reCaptchaProtectedDownloads_fail_pass', false)) {
 
-            $download_link = apply_filters('rcpdl_get_link_from_hash', get_option("rcpdl_{$hash}"), $hash);
+            $ins = $GLOBALS['reCaptchaProtectedDownloadsCore'];
+
+            if ( $ins->isNetworkActive() ) {
+                $download_link = get_site_option("rcpdl_{$hash}");
+            } else {
+                $download_link = get_option("rcpdl_{$hash}");
+            }
+
+            $download_link = apply_filters('rcpdl_get_link_from_hash', $download_link, $hash);
 
             if ( $download_link ) {
                 do_action('rcpdl_ajax_success', $download_link, $hash);
