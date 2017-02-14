@@ -2,7 +2,7 @@
 /*
 Plugin Name: reCaptcha Protected Downloads
 Plugin URI: https://github.com/elhardoum/recaptcha-protected-downloads
-Description: Protect your downloads from bots and spiders with a shortcode an Google's no-captcha reCaptcha
+Description: Protect your downloads from bots and spiders with a shortcode and Google's no-captcha reCaptcha
 Author: Samuel Elh
 Version: 0.1
 Author URI: https://samelh.com

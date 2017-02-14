@@ -10,3 +10,10 @@ if (!defined('WP_UNINSTALL_PLUGIN')) {
 
 // delete settings
 delete_site_option('reCaptchaProtectedDownloads_settings');
+
+global $wpdb;
+
+// delete hashed links
+$wpdb->query(
+    "DELETE FROM {$wpdb->options} WHERE `option_name` like 'rcpdl_%'"
+);
