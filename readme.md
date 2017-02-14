@@ -6,6 +6,8 @@ Protect your downloads from bots and spiders with a shortcode an Google's no-cap
 
 Use the shortcode `[recaptcha-protected-download]` to wrap any direct download link that you'd like reCaptcha to process.
 
+`[recaptcha-protected-download]https://example.com/download.zip[/recaptcha-protected-download]`
+
 ## Example
 
 Here's my `hello world` post HTML:
