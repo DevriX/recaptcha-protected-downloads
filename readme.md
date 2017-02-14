@@ -18,6 +18,14 @@ Hello! This page is dynamically generated with my plugin called Content Generato
 You can also download WordPress following <a href="[recaptcha-protected-download]https://wordpress.org/latest.zip[/recaptcha-protected-download]">this URL</a>
 ```
 
+Which is parsed as follows:
+
+```html
+Hello! This page is dynamically generated with my plugin called Content Generator which you can download from <a href="#rcpdl=371bce9996c0afc711648c2c4f3d5c97">here</a>.
+
+You can also download WordPress following <a href="#rcpdl=7039e773658ed3c70d50e791ed4940fd">this URL</a>
+```
+
 ## About
 
 This plugin opts to generate fake links (anchors) controlled with JavaScript to open up a modal once clicked to opt users to complete the anti-spam test with <a href="https://github.com/google/recaptcha/">Google reCaptcha</a>.
